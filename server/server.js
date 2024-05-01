@@ -1,3 +1,5 @@
+const MovieModel = require('./models/MovieModel');
+const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
 
@@ -19,3 +21,18 @@ app.post('/posts', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+
+mongoose
+    .connect(
+        "mongodb+srv://admin:2830Password@mattcluster.5pix0hp.mongodb.net/MOM-API?retryWrites=true&w=majority"
+    )
+    .then(() => {
+        app.listen(4000, () => {
+            console.log(`MOM API is running on port 4000`);
+        });
+        console.log("connected to MongoDB");
+    })
+    .catch(() => {
+        console.log(error);
+    });
