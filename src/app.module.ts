@@ -15,13 +15,15 @@ import { PostCreateComponent } from './app/post/post-create/post.component';
 import { PostListComponent } from './app/post/post-list/post-list.component';
 import { PostService } from './app/post/post.service';
 import { HeaderComponent } from './app/header/header.component';
+import { FooterComponent } from './app/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostCreateComponent,
     PostListComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
