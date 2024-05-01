@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  /* .main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .container {
+    display: flex;
+    flex-grow: 1;
+  }   */
+
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .container {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  app-post-list.right-card {
+    width: 48%;
+  }
+
+  app-post-file.left-card {
+    width: 48%; 
+    margin-right: 2%; 
+  }
+  
+  app-post-file.left-card textarea {
+    width: 100%; 
+    margin-bottom: 10px; 
+    }
+  
+
+  app-post-file.left-card button {
+    width: 50%; 
+    margin: 10px auto; 
+    display: block; 
+  }
