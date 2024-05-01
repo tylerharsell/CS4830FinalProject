@@ -1,36 +1,58 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:4200"
-}));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.json());
+const mongoURI =
+  "mongodb+srv://webdev2:webdev2@cluster1.ugvyl6x.mongodb.net/MovieList?retryWrites=true&w=majority&appName=Cluster1";
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
-  );
-  next();
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB Connected to MovieList Database"))
+  .catch((err) => console.log(err));
+
+const movieSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  rating: Number,
 });
 
-app.use('/api/posts', (req, res, next) => {
-  const posts = [
-    { content: "First server-side post" },
-    { content: "Second server-side post" }
-  ];
-  res.status(200).json({
-    message: "Posts fetched successfully!",
-    posts: posts
+// Create a Model connected to 'movies' collection in the 'MovieList' database
+const Movie = mongoose.model("Movie", movieSchema, "movies");
+
+// const movies = [
+//   { title: "Whiplash", description: "Whiplash description", rating: 10},
+//   { title: "Star Wars", description: "Star Wars description", rating: 8 },
+// ];
+
+app.get("/movies", async (req, res) => {
+  try {
+    const movies = await Movie.find();
+    res.status(200).json(movies);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
+app.post("/movies", async (req, res) => {
+  const newMovie = new Movie({
+    title: req.body.title,
+    description: req.body.description,
+    rating: req.body.rating,
   });
+
+  try {
+    const savedMovie = await newMovie.save();
+    res.status(201).json(savedMovie);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 });
 
 module.exports = app;
