@@ -1,0 +1,21 @@
+<mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+  <mat-expansion-panel *ngIf="movies.length > 0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Movies ({{movies.length}})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let movie of movies">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ movie.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ movie.description }}</p>
+          <p>Rating: {{ movie.rating }} / 10</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body" *ngIf="movies.length <= 0">No reviews yet</p>

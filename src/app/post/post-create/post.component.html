@@ -1,8 +1,0 @@
-<form #form="ngForm" (ngSubmit)="onAddPost(form)">
-  <mat-card>
-    <mat-form-field>
-      <textarea matInput name="content" [(ngModel)]="enteredContent" required cols="30" rows="10"></textarea>
-    </mat-form-field>
-    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Save Post</button>
-  </mat-card>
-</form>

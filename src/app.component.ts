@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Post} from './app/post/post.model'
+import { Movie } from './app/movie/movie.model'
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,9 @@ import { Post} from './app/post/post.model'
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  storedPost: Post[] = [];
+  storedMovie: Movie[] = [];
   title = 'Web_Dev_2_Final';
-  onPostAdded(post: Post){
-    this.storedPost.push(post)
+  onMovieAdded(movie: Movie){
+    this.storedMovie.push(movie)
   }
 }

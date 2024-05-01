@@ -1,0 +1,16 @@
+<form #form="ngForm" (ngSubmit)="onAddMovie(form)">
+  <mat-card>
+    <mat-form-field appearance="fill">
+      <input name = "title" [(ngModel)]="enteredTitle" class="form-control form-control-lg" type="text" placeholder="Movie Title">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput name="description" [(ngModel)]="enteredDescription" required cols="30" rows="10"
+        placeholder="Description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Rating (1-10)</mat-label>
+      <input matInput type="number" name="rating" [(ngModel)]="enteredRating" min="1" max="10" required>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Save Post</button>
+  </mat-card>
+</form>

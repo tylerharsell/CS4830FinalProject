@@ -11,9 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { PostCreateComponent } from './app/post/post-create/post.component';
-import { PostListComponent } from './app/post/post-list/post-list.component';
-import { PostService } from './app/post/post.service';
+import { MovieCreateComponent } from './app/movie/movie-create/movie.component';
+import { MovieListComponent } from './app/movie/movie-list/movie-list.component';
+import { MovieService } from './app/movie/movie.service';
 import { HeaderComponent } from './app/header/header.component';
 import { FooterComponent } from './app/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,8 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PostCreateComponent,
-    PostListComponent,
+    MovieCreateComponent,
+    MovieListComponent,
     HeaderComponent,
     FooterComponent
   ],
@@ -39,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatToolbarModule,
     AppRoutingModule
   ],
-  providers: [PostService],
+  providers: [MovieService], // Updated to MovieService
   bootstrap: [AppComponent]
 })
 export class AppModule { }
