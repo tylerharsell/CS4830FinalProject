@@ -16,6 +16,7 @@ import { PostListComponent } from './app/post/post-list/post-list.component';
 import { PostService } from './app/post/post.service';
 import { HeaderComponent } from './app/header/header.component';
 import { FooterComponent } from './app/footer/footer.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FooterComponent } from './app/footer/footer.component';
     MatCardModule,
     HttpClientModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AppRoutingModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]
